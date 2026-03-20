@@ -7,26 +7,12 @@ const nextConfig = {
     remotePatterns: [
       {
         protocol: 'https',
-        hostname: '*.digitaloceanspaces.com',
-      },
-      {
-        protocol: 'https',
-        hostname: 'cdn.salonnamehere.com',
-      },
-      {
-        protocol: 'https',
         hostname: 'lh3.googleusercontent.com',
       },
     ],
     formats: ['image/webp', 'image/avif'],
     deviceSizes: [320, 420, 640, 768, 1024, 1280, 1536],
     imageSizes: [16, 32, 48, 64, 96, 128, 256, 384],
-  },
-
-  // Internationalization (Turkish)
-  i18n: {
-    locales: ['tr', 'en'],
-    defaultLocale: 'tr',
   },
 
   // Headers
@@ -55,6 +41,25 @@ const nextConfig = {
             key: 'Permissions-Policy',
             value: 'camera=(), microphone=(), geolocation=()',
           },
+          {
+            key: 'Content-Security-Policy',
+            value: [
+              "default-src 'self'",
+              "script-src 'self' 'unsafe-inline' 'unsafe-eval' https://www.googletagmanager.com https://www.google-analytics.com",
+              "style-src 'self' 'unsafe-inline' https://fonts.googleapis.com",
+              "font-src 'self' https://fonts.gstatic.com https://fonts.googleapis.com",
+              "img-src 'self' data: blob: https://lh3.googleusercontent.com https://www.google-analytics.com",
+              "media-src 'self' blob:",
+              "connect-src 'self' https://www.google-analytics.com https://fonts.googleapis.com https://fonts.gstatic.com",
+              "frame-ancestors 'self'",
+              "base-uri 'self'",
+              "form-action 'self'",
+            ].join('; '),
+          },
+          {
+            key: 'Strict-Transport-Security',
+            value: 'max-age=63072000; includeSubDomains; preload',
+          },
         ],
       },
       // Cache long-lived assets
@@ -70,32 +75,7 @@ const nextConfig = {
     ];
   },
 
-  // Redirects
-  async redirects() {
-    return [
-      {
-        source: '/blog/:slug',
-        destination: '/blog/post/:slug',
-        permanent: false,
-      },
-    ];
-  },
 
-  // Rewrites
-  async rewrites() {
-    return {
-      beforeFiles: [
-        {
-          source: '/sitemap.xml',
-          destination: '/api/sitemap',
-        },
-        {
-          source: '/robots.txt',
-          destination: '/api/robots',
-        },
-      ],
-    };
-  },
 
   // Environment variables
   env: {

@@ -53,7 +53,7 @@ export default function TechniquesSection() {
 
       {/* Techniques Grid */}
       <div className="space-y-32">
-        {techniques.map((technique, index) => (
+        {techniques.map((technique) => (
           <div
             key={technique.id}
             className={`grid grid-cols-1 md:grid-cols-2 gap-16 items-center ${

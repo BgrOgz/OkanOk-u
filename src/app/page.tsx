@@ -33,45 +33,73 @@ export default function Home() {
     <>
       <Navigation />
 
+      {/* Mobil sticky Randevu Al — sol alt, kayarak gelir */}
+      <div
+        className="md:hidden fixed bottom-6 left-5 z-50"
+        style={{ animation: 'slideInLeft 0.6s cubic-bezier(0.16,1,0.3,1) 0.8s both' }}
+      >
+        <button className="flex items-center gap-2 bg-primary-container/90 text-on-primary-container backdrop-blur-md pl-5 pr-4 py-3 rounded-full text-xs font-semibold tracking-[0.15em] uppercase shadow-2xl shadow-black/40 border border-primary-container/20">
+          Randevu Al
+          <span className="material-symbols-outlined text-base leading-none">arrow_forward</span>
+        </button>
+      </div>
+
+      <style>{`
+        @keyframes slideInLeft {
+          from { opacity: 0; transform: translateX(-60px); }
+          to   { opacity: 1; transform: translateX(0); }
+        }
+      `}</style>
+
       <main className="pt-24">
         {/* ═══ Hero Section ═══ */}
-        <section className="relative h-[819px] flex items-center overflow-hidden">
-          <div className="absolute inset-0 z-0">
-            <Image src={IMAGES.hero} alt="Close up of luxurious long flowing blonde hair extensions" fill priority className="object-cover" />
-            <div className="absolute inset-0 bg-gradient-to-r from-secondary/80 to-transparent" />
-          </div>
-          <div className="relative z-10 max-w-7xl mx-auto px-8 w-full">
-            <span className="font-accent text-tertiary-container text-3xl mb-4 block">Artisan Repair &amp; Length</span>
-            <h1 className="font-serif text-6xl md:text-8xl text-white leading-none tracking-tighter mb-6 max-w-2xl">
-              Saç <br />
-              <span className="text-primary-container italic">Kaynak</span>
-            </h1>
-            <p className="text-surface-container-lowest/90 text-lg max-w-md mb-8 leading-relaxed">
-              Master-level hair extensions using ethically sourced premium strands and invisible attachment techniques.
-            </p>
-            <div className="flex gap-4">
-              <button className="bg-primary-container text-on-primary-container px-8 py-4 rounded-md font-semibold text-lg hover:scale-105 transition-transform duration-300">
-                View Lookbook
-              </button>
-              <button className="border border-white/30 text-white backdrop-blur-sm px-8 py-4 rounded-md font-semibold text-lg hover:bg-white/10 transition-colors">
-                Learn Techniques
-              </button>
+        <section className="min-h-screen flex items-center bg-gradient-to-br from-zinc-900 via-stone-900 to-[#1a1208] overflow-hidden">
+          <div className="w-full flex flex-col md:flex-row items-center">
+
+            {/* Sol — İçerik */}
+            <div className="order-2 md:order-1 flex-1 px-8 md:pl-16 xl:pl-24 py-16 md:py-0">
+              <span className="font-accent text-tertiary-container text-2xl md:text-3xl mb-4 block">Uzman Onarım &amp; Uzunluk</span>
+              <h1 className="font-serif text-6xl md:text-7xl xl:text-8xl text-white leading-none tracking-tighter mb-6">
+                Saç <br />
+                <span className="text-primary-container italic">Kaynak</span>
+              </h1>
+              <p className="text-white/70 text-base md:text-lg max-w-md mb-8 leading-relaxed">
+                Etik kaynaklı premium saç telleri ve görünmez bağlantı teknikleri ile usta seviyesinde saç kaynak hizmeti.
+              </p>
+              <div className="flex gap-3 flex-wrap">
+                <button className="bg-primary-container text-on-primary-container px-6 py-2.5 rounded-full text-sm font-medium tracking-wide hover:scale-105 transition-transform duration-300">
+                  Randevu Al
+                </button>
+                <button className="border border-white/40 text-white px-6 py-2.5 rounded-full text-sm font-medium tracking-wide hover:bg-white/10 transition-colors">
+                  Teknikleri Keşfet
+                </button>
+              </div>
             </div>
+
+            {/* Sağ — Video kenara kadar uzanır */}
+            <div className="order-1 md:order-2 w-full md:w-[45%] lg:w-[42%] self-stretch min-h-[50vh] md:min-h-screen relative overflow-hidden">
+              <video
+                autoPlay
+                loop
+                muted
+                playsInline
+                className="absolute inset-0 w-full h-full object-cover"
+              >
+                <source src="/videos/hero.mp4" type="video/mp4" />
+              </video>
+              {/* Sol kenardan yumuşak geçiş */}
+              <div className="absolute inset-0 bg-gradient-to-r from-zinc-900 via-zinc-900/20 to-transparent" />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/20 via-transparent to-transparent" />
+            </div>
+
           </div>
         </section>
 
-        {/* Signature Repair Badge */}
-        <div className="absolute right-12 top-[768px] z-20">
-          <div className="w-32 h-32 rounded-full glass-card border border-outline-variant/20 flex flex-col items-center justify-center text-center p-4">
-            <span className="font-accent text-primary text-xl">100%</span>
-            <span className="text-[10px] uppercase tracking-widest font-bold">Natural Virgin Hair</span>
-          </div>
-        </div>
 
         {/* ═══ Techniques Section ═══ */}
         <section className="py-24 max-w-7xl mx-auto px-8">
           <div className="mb-16 text-center">
-            <h2 className="font-serif text-4xl text-on-surface mb-4">Precision Techniques</h2>
+            <h2 className="font-serif text-4xl text-on-surface mb-4">Uygulama Teknikleri</h2>
             <div className="w-24 h-px bg-primary mx-auto" />
           </div>
           <div className="space-y-32">
@@ -83,25 +111,25 @@ export default function Home() {
                   <Image src={IMAGES.technique1} alt="Micro capsule hair extension application process closeup" fill className="object-cover rounded-lg shadow-xl" />
                 </div>
                 <div className="absolute -bottom-8 -right-8 glass-card p-6 rounded-lg max-w-xs shadow-lg">
-                  <p className="font-accent text-primary text-xl">Invisible Bond</p>
-                  <p className="text-sm text-zinc-600 mt-2">Perfect for fine hair needing high-definition volume.</p>
+                  <p className="font-accent text-primary text-xl">Görünmez Bağlantı</p>
+                  <p className="text-sm text-zinc-600 mt-2">Yüksek yoğunluklu hacim isteyen ince saçlar için ideal.</p>
                 </div>
               </div>
               <div className="pl-0 md:pl-12">
-                <span className="text-primary font-bold tracking-widest uppercase text-sm">Micro-Keratin Capsule</span>
-                <h3 className="font-serif text-4xl my-4 italic">Micro Kapsül Kaynak</h3>
+                <span className="text-primary font-bold tracking-widest uppercase text-sm">Mikro-Keratin Kapsül</span>
+                <h3 className="font-serif text-4xl my-4 italic">Mikro Kapsül Kaynak</h3>
                 <p className="text-on-surface-variant leading-relaxed mb-6">
-                  The gold standard of extensions. Our micro-capsule technique uses medical-grade keratin to fuse individual strands. The bonds are smaller than a grain of rice, ensuring complete invisibility even in the highest ponytails.
+                  Saç kaynağın altın standardı. Mikro kapsül tekniğimiz, tıbbi sınıf keratini kullanarak tek tek saç tellerini birleştirir. Bağlantılar bir pirinç tanesinden küçüktür ve en yüksek at kuyruğunda bile tamamen görünmezdir.
                 </p>
                 <ul className="space-y-3 mb-8">
                   <li className="flex items-center gap-3">
-                    <span className="material-symbols-outlined text-primary">check_circle</span> 4-6 months durability
+                    <span className="material-symbols-outlined text-primary">check_circle</span> 4-6 ay dayanıklılık
                   </li>
                   <li className="flex items-center gap-3">
-                    <span className="material-symbols-outlined text-primary">check_circle</span> Zero scalp irritation
+                    <span className="material-symbols-outlined text-primary">check_circle</span> Sıfır saç derisi tahrişi
                   </li>
                   <li className="flex items-center gap-3">
-                    <span className="material-symbols-outlined text-primary">check_circle</span> Heat &amp; water resistant
+                    <span className="material-symbols-outlined text-primary">check_circle</span> Isıya ve suya dayanıklı
                   </li>
                 </ul>
               </div>
@@ -110,20 +138,20 @@ export default function Home() {
             {/* Technique 2 */}
             <div className="grid grid-cols-1 md:grid-cols-2 gap-16 items-center">
               <div className="order-2 md:order-1 pr-0 md:pr-12">
-                <span className="text-primary font-bold tracking-widest uppercase text-sm">Hand-Tied Wefts</span>
+                <span className="text-primary font-bold tracking-widest uppercase text-sm">El Yapımı Atkı</span>
                 <h3 className="font-serif text-4xl my-4 italic">Medikal Kaynak</h3>
                 <p className="text-on-surface-variant leading-relaxed mb-6">
-                  Designed specifically for damaged or fragile hair. Medical extensions utilize a tension-free application method that encourages natural hair growth while providing instant maximum density.
+                  Hasarlı veya kırılgan saçlar için özel olarak tasarlanmıştır. Medikal kaynak, doğal saç büyümesini teşvik ederken anında maksimum yoğunluk sağlayan gerilimsiz bir uygulama yöntemi kullanır.
                 </p>
                 <ul className="space-y-3 mb-8">
                   <li className="flex items-center gap-3">
-                    <span className="material-symbols-outlined text-primary">check_circle</span> Rapid application
+                    <span className="material-symbols-outlined text-primary">check_circle</span> Hızlı uygulama
                   </li>
                   <li className="flex items-center gap-3">
-                    <span className="material-symbols-outlined text-primary">check_circle</span> Reusable strands
+                    <span className="material-symbols-outlined text-primary">check_circle</span> Yeniden kullanılabilir teller
                   </li>
                   <li className="flex items-center gap-3">
-                    <span className="material-symbols-outlined text-primary">check_circle</span> Seamless blending
+                    <span className="material-symbols-outlined text-primary">check_circle</span> Kusursuz geçiş
                   </li>
                 </ul>
               </div>
@@ -142,8 +170,8 @@ export default function Home() {
           <div className="max-w-7xl mx-auto px-8">
             <div className="flex justify-between items-end mb-12">
               <div>
-                <h2 className="font-serif text-4xl mb-2 italic">Product Selection</h2>
-                <p className="text-zinc-500">Premium hair sourced from the Slavic and European regions.</p>
+                <h2 className="font-serif text-4xl mb-2 italic">Ürün Seçimi</h2>
+                <p className="text-zinc-500">Slav ve Avrupa bölgelerinden temin edilen premium saçlar.</p>
               </div>
               <div className="hidden md:flex gap-2">
                 <button className="p-2 rounded-full border border-outline-variant hover:bg-white transition-colors">
@@ -159,20 +187,20 @@ export default function Home() {
               <div className="md:col-span-2 md:row-span-2 bg-surface-container-lowest p-8 rounded-lg border border-outline-variant/10 group cursor-pointer overflow-hidden relative">
                 <Image src={IMAGES.gallery1} alt="Display of diverse hair extension colors and textures" fill className="object-cover opacity-20 group-hover:scale-110 transition-transform duration-700" />
                 <div className="relative z-10">
-                  <span className="bg-primary-container text-on-primary-container px-3 py-1 rounded-full text-xs font-bold uppercase tracking-widest">Premium Selection</span>
-                  <h4 className="font-serif text-3xl mt-6">Virgin Slavic Hair</h4>
-                  <p className="text-zinc-600 mt-4 max-w-sm">Naturally soft and thin textured hair, perfect for a seamless match with European hair types. Never chemically treated.</p>
+                  <span className="bg-primary-container text-on-primary-container px-3 py-1 rounded-full text-xs font-bold uppercase tracking-widest">Premium Seçim</span>
+                  <h4 className="font-serif text-3xl mt-6">Bakire Slav Saçı</h4>
+                  <p className="text-zinc-600 mt-4 max-w-sm">Doğal olarak yumuşak ve ince dokulu saç, Avrupa saç tipleriyle kusursuz uyum sağlar. Asla kimyasal işlem görmemiştir.</p>
                   <button className="mt-8 text-primary font-bold flex items-center gap-2 group-hover:gap-4 transition-all underline decoration-2 underline-offset-4 italic">
-                    Explore Texture <span className="material-symbols-outlined">east</span>
+                    Dokuyu Keşfet <span className="material-symbols-outlined">east</span>
                   </button>
                 </div>
               </div>
               {/* Product cards */}
               {[
-                { src: IMAGES.gallery2, alt: 'Dark brunette hair extensions', name: 'Deep Brunette Luxe', desc: 'Natural wave, 60cm' },
-                { src: IMAGES.gallery3, alt: 'Golden blonde hair extensions bundles', name: 'Nordic Gold', desc: 'Straight silk, 55cm' },
-                { src: IMAGES.gallery4, alt: 'Copper red wavy hair extensions', name: 'Sunset Copper', desc: 'Body wave, 50cm' },
-                { src: IMAGES.gallery5, alt: 'Platinum ash blonde hair extensions', name: 'Icy Platinum', desc: 'Ultra-thin, 65cm' },
+                { src: IMAGES.gallery2, alt: 'Koyu kumral saç kaynak', name: 'Koyu Kumral Lüks', desc: 'Doğal dalga, 60cm' },
+                { src: IMAGES.gallery3, alt: 'Altın sarısı saç kaynak demetleri', name: 'Nordik Altın', desc: 'Düz ipek, 55cm' },
+                { src: IMAGES.gallery4, alt: 'Bakır kızıl dalgalı saç kaynak', name: 'Gün Batımı Bakır', desc: 'Gövde dalgası, 50cm' },
+                { src: IMAGES.gallery5, alt: 'Platin küllü sarı saç kaynak', name: 'Buzlu Platin', desc: 'Ultra ince, 65cm' },
               ].map((product) => (
                 <div key={product.name} className="bg-white p-6 rounded-lg border border-outline-variant/10 hover:shadow-lg transition-shadow">
                   <div className="h-40 bg-surface-container mb-4 rounded overflow-hidden relative">
@@ -189,13 +217,13 @@ export default function Home() {
         {/* ═══ Pricing & Reviews ═══ */}
         <section className="py-24 max-w-7xl mx-auto px-8 grid grid-cols-1 lg:grid-cols-3 gap-16">
           <div className="lg:col-span-2">
-            <h2 className="font-serif text-4xl mb-12">Service Menu</h2>
+            <h2 className="font-serif text-4xl mb-12">Hizmet Menüsü</h2>
             <div className="space-y-6">
               {[
-                { title: 'Full Volume Set (100-120 strands)', subtitle: 'Recommended for density without length', price: '₺4.500+' },
-                { title: 'Artisan Length Set (150-200 strands)', subtitle: 'Complete transformation for length and volume', price: '₺7.200+' },
-                { title: 'Medikal Kaynak Maintenance', subtitle: 'Re-taping and scalp care (every 8 weeks)', price: '₺2.100' },
-                { title: 'Hybrid Technique Customization', subtitle: 'Mixing bonds for a unique profile', price: 'Consultation' },
+                { title: 'Tam Hacim Seti (100-120 tel)', subtitle: 'Uzunluk olmadan yoğunluk isteyenler için önerilir', price: '₺4.500+' },
+                { title: 'Uzunluk Seti (150-200 tel)', subtitle: 'Uzunluk ve hacim için komple dönüşüm', price: '₺7.200+' },
+                { title: 'Medikal Kaynak Bakımı', subtitle: 'Yeniden bantlama ve saç derisi bakımı (her 8 haftada)', price: '₺2.100' },
+                { title: 'Hibrit Teknik Özelleştirme', subtitle: 'Benzersiz bir profil için karışık bağlantılar', price: 'Danışma' },
               ].map((service) => (
                 <div key={service.title} className="flex justify-between items-end border-b border-outline-variant/20 pb-4">
                   <div>
@@ -212,7 +240,7 @@ export default function Home() {
           <div className="space-y-8">
             <div className="bg-secondary text-white p-8 rounded-lg relative">
               <span className="material-symbols-outlined absolute top-4 right-4 text-primary-container opacity-50 text-4xl">format_quote</span>
-              <p className="font-accent text-2xl italic mb-6">&quot;Absolute magic. My micro-bonds are literally invisible, even when I workout.&quot;</p>
+              <p className="font-accent text-2xl italic mb-6">&quot;Tam bir sihir. Mikro bağlantılarım spor yaparken bile kesinlikle görünmüyor.&quot;</p>
               <div>
                 <p className="font-bold">Ebru S.</p>
                 <div className="flex text-primary-container">
@@ -223,7 +251,7 @@ export default function Home() {
               </div>
             </div>
             <div className="bg-surface-container-high p-8 rounded-lg">
-              <p className="text-zinc-600 mb-6 italic leading-relaxed">&quot;The hair quality is unlike anything I&apos;ve tried in Istanbul. It stays soft for months.&quot;</p>
+              <p className="text-zinc-600 mb-6 italic leading-relaxed">&quot;İstanbul&apos;da denediğim hiçbir şeye benzemeyen bir saç kalitesi. Aylarca yumuşak kalıyor.&quot;</p>
               <p className="font-bold">Melis K.</p>
             </div>
           </div>
@@ -232,23 +260,23 @@ export default function Home() {
         {/* ═══ FAQ Section ═══ */}
         <section className="py-24 bg-white">
           <div className="max-w-4xl mx-auto px-8">
-            <h2 className="font-serif text-4xl text-center mb-16 italic">Maintenance &amp; Care FAQ</h2>
+            <h2 className="font-serif text-4xl text-center mb-16 italic">Bakım &amp; Sık Sorulan Sorular</h2>
             <div className="space-y-4">
               {[
                 {
-                  question: 'How long do extensions typically last?',
+                  question: 'Saç kaynak ne kadar süre dayanır?',
                   answer:
-                    'With proper salon maintenance every 3-4 months, your extensions can last up to a year. We recommend a check-up every 8 weeks to ensure your natural hair is healthy.',
+                    'Her 3-4 ayda düzenli salon bakımıyla saç kaynağınız bir yıla kadar dayanabilir. Doğal saçınızın sağlıklı olduğundan emin olmak için her 8 haftada bir kontrol öneriyoruz.',
                 },
                 {
-                  question: 'Will hair extensions damage my natural hair?',
+                  question: 'Saç kaynak doğal saçıma zarar verir mi?',
                   answer:
-                    'When applied by a certified master like Okan Okcu using the correct weight-to-strand ratio, extensions do not damage hair. In many cases, they protect the natural hair from environmental stressors.',
+                    'Okan Okçu gibi sertifikalı bir usta tarafından doğru ağırlık-tel oranıyla uygulandığında, kaynak saça zarar vermez. Birçok durumda doğal saçı çevresel stres faktörlerinden korur.',
                 },
                 {
-                  question: 'Can I dye my hair with extensions in?',
+                  question: 'Kaynak varken saçımı boyatabilir miyim?',
                   answer:
-                    'Yes, but we strongly recommend having any coloring done at our studio to ensure the bonds are not compromised and the color match remains seamless.',
+                    'Evet, ancak bağlantıların zarar görmemesi ve renk uyumunun kusursuz kalması için boyama işleminin stüdyomuzda yapılmasını şiddetle tavsiye ediyoruz.',
                 },
               ].map((faq, index) => (
                 <details key={index} className="group border-b border-outline-variant/20 pb-4" open={index === 0}>
@@ -270,15 +298,15 @@ export default function Home() {
               <Image src={IMAGES.cta} alt="Stylist working on a client hair in a luxury salon environment" fill className="object-cover" />
             </div>
             <div className="w-full md:w-1/2 p-12">
-              <h2 className="font-serif text-4xl mb-6">Begin Your Transformation</h2>
-              <p className="text-zinc-600 mb-8">Every masterpiece starts with a conversation. Book your complimentary physical or digital consultation today.</p>
+              <h2 className="font-serif text-4xl mb-6">Dönüşümünüze Başlayın</h2>
+              <p className="text-zinc-600 mb-8">Her başyapıt bir sohbetle başlar. Ücretsiz yüz yüze veya dijital danışma randevunuzu bugün alın.</p>
               <div className="space-y-4">
                 <div className="flex items-center gap-4">
                   <span className="material-symbols-outlined text-primary">calendar_month</span>
-                  <span>Next Available: Tuesday, Oct 24</span>
+                  <span>Müsait Randevu: Salı, Eki 24</span>
                 </div>
                 <button className="w-full bg-primary text-on-primary py-4 rounded-md font-bold tracking-widest uppercase hover:bg-on-primary-container transition-colors shadow-lg">
-                  Book Consultation
+                  Randevu Al
                 </button>
               </div>
             </div>
@@ -292,38 +320,38 @@ export default function Home() {
           <div>
             <span className="text-xl font-serif text-yellow-500 mb-4 flex items-center">
               <Image src={IMAGES.logo} alt="Okan Okcu Logo Symbol" width={32} height={32} className="h-8 w-auto inline-block mr-3 mb-1 object-contain" />
-              Okan Okcu Hair Repair
+              Okan Okcu Saç Onarım
             </span>
-            <p className="text-zinc-400 text-sm leading-relaxed">The pinnacle of hair repair and premium extensions in the heart of the city. Artisan craftsmanship for discerning individuals.</p>
+            <p className="text-zinc-400 text-sm leading-relaxed">Şehrin kalbinde saç onarımı ve premium saç kaynağın zirvesi. Seçici bireyler için usta işçiliği.</p>
           </div>
           <div>
-            <h5 className="text-white font-bold mb-4">Studio</h5>
+            <h5 className="text-white font-bold mb-4">Stüdyo</h5>
             <ul className="space-y-2">
-              <li><a className="text-zinc-500 hover:text-white transition-colors text-sm" href="#">Atelier</a></li>
-              <li><a className="text-yellow-500 underline text-sm" href="#">Services</a></li>
-              <li><a className="text-zinc-500 hover:text-white transition-colors text-sm" href="#">Before &amp; After</a></li>
-              <li><a className="text-zinc-500 hover:text-white transition-colors text-sm" href="#">Academy</a></li>
+              <li><a className="text-zinc-500 hover:text-white transition-colors text-sm" href="#">Atölye</a></li>
+              <li><a className="text-yellow-500 underline text-sm" href="#">Hizmetler</a></li>
+              <li><a className="text-zinc-500 hover:text-white transition-colors text-sm" href="#">Önce &amp; Sonra</a></li>
+              <li><a className="text-zinc-500 hover:text-white transition-colors text-sm" href="#">Akademi</a></li>
             </ul>
           </div>
           <div>
-            <h5 className="text-white font-bold mb-4">Legal</h5>
+            <h5 className="text-white font-bold mb-4">Yasal</h5>
             <ul className="space-y-2">
-              <li><a className="text-zinc-500 hover:text-white transition-colors text-sm" href="#">Privacy Policy</a></li>
-              <li><a className="text-zinc-500 hover:text-white transition-colors text-sm" href="#">Terms of Service</a></li>
-              <li><a className="text-zinc-500 hover:text-white transition-colors text-sm" href="#">Studio Location</a></li>
+              <li><a className="text-zinc-500 hover:text-white transition-colors text-sm" href="#">Gizlilik Politikası</a></li>
+              <li><a className="text-zinc-500 hover:text-white transition-colors text-sm" href="#">Kullanım Şartları</a></li>
+              <li><a className="text-zinc-500 hover:text-white transition-colors text-sm" href="#">Stüdyo Konumu</a></li>
             </ul>
           </div>
           <div>
-            <h5 className="text-white font-bold mb-4">Connect</h5>
+            <h5 className="text-white font-bold mb-4">İletişim</h5>
             <ul className="space-y-2">
               <li><a className="text-zinc-500 hover:text-white transition-colors text-sm" href="#">Instagram</a></li>
               <li><a className="text-zinc-500 hover:text-white transition-colors text-sm" href="#">WhatsApp</a></li>
-              <li><a className="text-zinc-500 hover:text-white transition-colors text-sm" href="#">Contact Us</a></li>
+              <li><a className="text-zinc-500 hover:text-white transition-colors text-sm" href="#">Bize Ulaşın</a></li>
             </ul>
           </div>
         </div>
         <div className="max-w-7xl mx-auto px-8 mt-16 pt-8 border-t border-zinc-800 flex justify-between items-center">
-          <p className="text-zinc-400 text-sm tracking-wide">&copy; 2024 Okan Okcu Hair Repair Studio. Crafted for Excellence.</p>
+          <p className="text-zinc-400 text-sm tracking-wide">&copy; 2024 Okan Okcu Saç Onarım Stüdyosu. Mükemmellik İçin Tasarlandı.</p>
           <div className="flex gap-4">
             <span className="material-symbols-outlined text-zinc-500 cursor-pointer hover:text-white">expand_less</span>
           </div>

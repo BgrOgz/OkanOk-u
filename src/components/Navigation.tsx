@@ -13,11 +13,11 @@ export default function Navigation() {
   const pathname = usePathname();
 
   const navLinks = [
-    { href: '/atelier', label: 'Atelier' },
-    { href: '/services', label: 'Services' },
-    { href: '/hair-extensions', label: 'Hair Extensions' },
-    { href: '/gallery', label: 'Before & After' },
-    { href: '/contact', label: 'Book Now' },
+    { href: '/atelier', label: 'Atölye' },
+    { href: '/services', label: 'Hizmetler' },
+    { href: '/hair-extensions', label: 'Saç Kaynak' },
+    { href: '/gallery', label: 'Önce & Sonra' },
+    { href: '/contact', label: 'Randevu Al' },
   ];
 
   return (
@@ -59,7 +59,7 @@ export default function Navigation() {
 
         {/* CTA Button */}
         <button className="hidden md:block bg-primary text-on-primary px-6 py-2 rounded-md font-medium hover:bg-primary-container hover:text-on-primary-container transition-all duration-300">
-          Consultation
+          Randevu Al
         </button>
 
         {/* Mobile Menu Button */}
@@ -87,7 +87,7 @@ export default function Navigation() {
               </Link>
             ))}
             <button className="w-full bg-primary text-on-primary py-2 rounded-md font-medium">
-              Consultation
+              Randevu Al
             </button>
           </div>
         </div>

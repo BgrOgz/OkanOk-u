@@ -49,6 +49,10 @@ export default function Home() {
           from { opacity: 0; transform: translateX(-60px); }
           to   { opacity: 1; transform: translateX(0); }
         }
+        @keyframes waveDown {
+          0%   { transform: translateY(-100%); }
+          100% { transform: translateY(200%); }
+        }
       `}</style>
 
       <main className="pt-24">
@@ -57,7 +61,20 @@ export default function Home() {
           <div className="w-full flex flex-col md:flex-row items-center">
 
             {/* Sol — İçerik */}
-            <div className="order-2 md:order-1 flex-1 px-8 md:pl-16 xl:pl-24 py-16 md:py-0">
+            <div className="order-2 md:order-1 flex-1 px-8 md:pl-16 xl:pl-24 py-16 md:py-0 relative overflow-hidden">
+              {/* Wave efekti — tüm sol alanı kaplar */}
+              <div className="absolute inset-0 pointer-events-none overflow-hidden">
+                <div
+                  style={{
+                    position: 'absolute',
+                    left: 0,
+                    right: 0,
+                    height: '45%',
+                    background: 'linear-gradient(to bottom, transparent 0%, rgba(255,255,255,0.04) 30%, rgba(255,255,255,0.08) 50%, rgba(255,255,255,0.04) 70%, transparent 100%)',
+                    animation: 'waveDown 5s ease-in-out infinite',
+                  }}
+                />
+              </div>
               <span className="font-accent text-tertiary-container text-2xl md:text-3xl mb-4 block">Uzman Onarım &amp; Uzunluk</span>
               <h1 className="font-serif text-6xl md:text-7xl xl:text-8xl text-white leading-none tracking-tighter mb-6">
                 Saç <br />

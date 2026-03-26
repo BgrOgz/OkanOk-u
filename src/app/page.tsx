@@ -347,6 +347,7 @@ export default function Home() {
               <li><a className="text-zinc-500 hover:text-white transition-colors text-sm" href="#">Atölye</a></li>
               <li><a className="text-yellow-500 underline text-sm" href="#">Hizmetler</a></li>
               <li><a className="text-zinc-500 hover:text-white transition-colors text-sm" href="#">Önce &amp; Sonra</a></li>
+              <li><a className="text-yellow-500 underline text-sm" href="/blog">Blog</a></li>
               <li><a className="text-zinc-500 hover:text-white transition-colors text-sm" href="#">Akademi</a></li>
             </ul>
           </div>

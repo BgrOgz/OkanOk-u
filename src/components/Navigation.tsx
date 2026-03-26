@@ -17,6 +17,7 @@ export default function Navigation() {
     { href: '/services', label: 'Hizmetler' },
     { href: '/hair-extensions', label: 'Saç Kaynak' },
     { href: '/gallery', label: 'Önce & Sonra' },
+    { href: '/blog', label: 'Blog' },
     { href: '/contact', label: 'Randevu Al' },
   ];
 
